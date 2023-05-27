@@ -1,0 +1,5 @@
+flask
+google-play-scraper
+requests
+beautifulsoup4
+celery
