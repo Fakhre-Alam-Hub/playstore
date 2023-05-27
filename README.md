@@ -1,4 +1,4 @@
-# playstore
+# Playstore
 
 REST API with python flask to fetch playstore app details
 
@@ -29,3 +29,10 @@ REST API with python flask to fetch playstore app details
     flask run`
    
 5. The API will be accessible at http://localhost:5000/api/apps.
+
+### Result
+
+Here is the sored data in sqlite DB database
+
+
+![playstore db](https://github.com/Fakhre-Alam-Hub/playstore/assets/60462475/12fc446a-6791-4c8b-b229-a2886c33d432)
