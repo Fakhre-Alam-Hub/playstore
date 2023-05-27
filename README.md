@@ -36,3 +36,5 @@ Here is the stored data in sqlite DB database:
 
 
 ![playstore db](https://github.com/Fakhre-Alam-Hub/playstore/assets/60462475/12fc446a-6791-4c8b-b229-a2886c33d432)
+
+
