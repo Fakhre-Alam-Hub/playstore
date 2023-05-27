@@ -4,7 +4,7 @@ REST API with python flask to fetch playstore app details
 
 1. Clone this repo
 
-  `git clone `
+  `git clone https://github.com/Fakhre-Alam-Hub/playstore.git`
 
 2. Activate environment env
 

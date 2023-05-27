@@ -6,7 +6,7 @@ def add_data(results):
     cursor = conn.cursor()
 
     for result in results:
-        package_name = result['app_id']
+        package_name = result['appId']
         title = result['title']
         developer = result['developer']
         score = result['score']
@@ -20,5 +20,6 @@ def add_data(results):
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ''', (package_name, title, developer, score, reviews, ratings, genre, icon ))
 
+    print("Results added to database successfully !")
     conn.commit()
     conn.close()

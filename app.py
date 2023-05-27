@@ -7,11 +7,14 @@ from tasks import fetch_package_details
 from sqliteDB import add_data
 from create_sqliteDB import create_sqliteDB_table
 
+# app = Flask(__name__)
+# app.config['CELERY_BROKER_URL'] = 'amqp:/guest:guest@127.0.0.1:5672/'
+# app.config['CELERY_RESULT_BACKEND'] = 'rpc://'
+# celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
+# celery.conf.update(app.config)
+
 app = Flask(__name__)
-app.config['CELERY_BROKER_URL'] = 'amqp://guest:guest@localhost:5672//'
-app.config['CELERY_RESULT_BACKEND'] = 'rpc://'
-celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
-celery.conf.update(app.config)
+celery = Celery(app.name, broker="amqp://guest:guest@127.0.0.1:5672",backend="'rpc://")
 
 # uncomment this if you want to create table
 # create table if not exist
@@ -34,7 +37,6 @@ def get_package_names():
 
 @app.route('/api/apps', methods=['GET'])
 def fetch_app_details():
-    
     # get the package names
     package_names = get_package_names()
 
@@ -48,8 +50,19 @@ def fetch_app_details():
     add_data(results)
 
     # Return the JSON response
-    return jsonify("Added the data to the database successfully...")
+    response = {
+        "message": "Added the data to the database successfully...",
+        "package_names":package_names
+    }    
+    return jsonify(results)
 
+@app.route('/', methods=['GET'])
+def home():
+    response = {
+        "info": "Welcome to Home Page!",
+        "message": "Go to --> http://127.0.0.1:5000/api/apps"
+    }
+    return jsonify(response)
 
 if __name__ == "__main__":
     app.run(debug=True)
